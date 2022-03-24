@@ -1,0 +1,38 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .background {
+        background-color: #0d6812;
+    }
+    
+    .container {
+        width: 100vw;
+        height: 85vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .buttondiv {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .newRound {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 3rem;
+        width: 80vw;
+        height: 10vh;
+        background-color: #d3d01a;
+        border: 5px solid black;
+        text-align: center;
+        border-radius: 15px;
+    }
+    
+    .image {
+        width: 90vw;
+        object-fit: contain;
+    }
