@@ -15,9 +15,8 @@ const COLOR_CODES = {
     }
 };
 
-// vars
 let remainingPathColor = COLOR_CODES.info.color;
-let timeLimit = 60;
+let timeLimit = document.getElementById("numberOfSecondsInput").value;
 let timePassed = 0;
 let timeLeft = timeLimit;
 let timerInterval = null;
@@ -46,29 +45,45 @@ document.getElementById("timer").innerHTML = `
 </div>
 `;
 
-// start timer on click! & reset interval & timePassed & play sound when finished
-startTimer();
+document.getElementById("timer").addEventListener("click", startTimer) ;
 
-function onTimesUp() {
-    clearInterval(timerInterval);
+function resetTimer() {
+  clearInterval(timerInterval);
+  timePassed = 0;
+  timeLeft = timeLimit;
+
+  updatedTimeLabel();
+}
+
+function resetInterval() {
+  clearInterval(timerInterval);
+}
+
+function updatedTimeLabel() {
+  setCircleDasharray();
+  setRemainingPathColor(timeLeft);
+  document.getElementById("base-timer-label").innerHTML = formatTimeLeft(timeLeft);
 }
   
 function startTimer() {
+  resetTimer();
+
   timerInterval = setInterval(() => {
-    
-    // The amount of time passed increments by one
     timePassed = timePassed += 1;
     timeLeft = timeLimit - timePassed;
-    
-    // The time left label is updated
-    document.getElementById("base-timer-label").innerHTML = formatTimeLeft(timeLeft);
-    setCircleDasharray();
-    setRemainingPathColor(timeLeft);
+
+    updatedTimeLabel();
 
     if (timeLeft === 0) {
-        onTimesUp();
-      }
+      resetInterval();
+      playSound();
+    }
   }, 1000);
+}
+
+function playSound() {
+  const audio = new Audio('mixkit-achievement-bell-600.mp3');
+  audio.play();
 }
 
 function formatTimeLeft(time) {
@@ -87,7 +102,6 @@ function calculateTimeFraction() {
     return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
 }
       
-// Update the dasharray value as time passes, starting with 283
 function setCircleDasharray() {
     const circleDasharray = `${(
       calculateTimeFraction() * FULL_DASH_ARRAY
