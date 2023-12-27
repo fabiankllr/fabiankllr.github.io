@@ -18,7 +18,6 @@ const COLOR_CODES = {
 // prepare persistent sound effect for iOS user
 const soundEffect = new Audio();
 soundEffect.autoplay = true;
-soundEffect.src = "silence.mp3";
 
 
 let remainingPathColor = COLOR_CODES.info.color;
@@ -77,6 +76,8 @@ function updatedTimeLabel() {
 }
   
 function startTimer() {
+  soundEffect.src = "silence.mp3";
+
   resetTimer();
 
   timerInterval = setInterval(() => {
