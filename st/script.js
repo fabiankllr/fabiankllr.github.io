@@ -15,6 +15,12 @@ const COLOR_CODES = {
     }
 };
 
+// prepare persistent sound effect for iOS user
+const soundEffect = new Audio();
+soundEffect.autoplay = true;
+soundEffect.src = "silence.mp3";
+
+
 let remainingPathColor = COLOR_CODES.info.color;
 let timeLimit = 60;
 let timePassed = 0;
@@ -48,9 +54,7 @@ document.getElementById("timer").innerHTML = `
 document.getElementById("timer").addEventListener("click", startTimer);
 
 function setTimeLimit() {
-  console.log("setTimeLimit");
   timeLimit = document.getElementById("numberOfSecondsInput").value;
-
   resetTimer();
 }
 
@@ -89,8 +93,7 @@ function startTimer() {
 }
 
 function playSound() {
-  const audio = new Audio('mixkit-achievement-bell-600.mp3');
-  audio.play();
+  soundEffect.src = 'mixkit-achievement-bell-600.mp3';
 }
 
 function formatTimeLeft(time) {
@@ -136,5 +139,12 @@ function setRemainingPathColor(timeLeft) {
       document
         .getElementById("base-timer-path-remaining")
         .classList.add(warning.color);
+    } else if (timeLeft > warning.threshold) {
+      document
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(alert.color);
+      document
+        .getElementById("base-timer-path-remaining")
+        .classList.add(info.color);
     }
 }
