@@ -16,7 +16,7 @@ const COLOR_CODES = {
 };
 
 let remainingPathColor = COLOR_CODES.info.color;
-let timeLimit = document.getElementById("numberOfSecondsInput").value;
+let timeLimit = 60;
 let timePassed = 0;
 let timeLeft = timeLimit;
 let timerInterval = null;
@@ -45,7 +45,14 @@ document.getElementById("timer").innerHTML = `
 </div>
 `;
 
-document.getElementById("timer").addEventListener("click", startTimer) ;
+document.getElementById("timer").addEventListener("click", startTimer);
+
+function setTimeLimit() {
+  console.log("setTimeLimit");
+  timeLimit = document.getElementById("numberOfSecondsInput").value;
+
+  resetTimer();
+}
 
 function resetTimer() {
   clearInterval(timerInterval);
