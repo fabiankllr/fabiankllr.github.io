@@ -15,8 +15,8 @@ function setDiceNumber() {
 
   if (number < 2 || number > 100) {
     alert("Number of sides must be between 2 and 100");
-    document.getElementById("numberOfSidesInput").textContent = numberOfSides;
- 
+    document.getElementById("numberOfSidesInput").value = numberOfSides;
+    
     return;
   }
 
