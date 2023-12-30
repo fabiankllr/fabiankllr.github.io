@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skat Card Draw</title>
+    <title>Stop Timer</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
-<body class="background">
-    <div class="container" id="board">
-        <img src="img/backside.png" class="image">
+<body>
+    <div id="dice">
+        <div id="number">1</div>
     </div>
-    <div class="buttondiv">
-        <button class="newRound" id="newGame">Neustart</button>
+    <div class="container">
+        <input type="number" pattern="[0-9]*" placeholder="sides" id="numberOfSidesInput" value="6" onfocusout="setDiceNumber()">
     </div>
 </body>
 

@@ -4,7 +4,7 @@
     "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
-    "name": "Skat Card Draw",
-    "short_name": "SCD",
-    "description": "Draw 1 card of 1 set with each click"
+    "name": "Game Helper Collection",
+    "short_name": "GHC",
+    "description": ""
 }
